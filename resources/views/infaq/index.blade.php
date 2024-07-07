@@ -13,30 +13,28 @@
         </a>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>NIS</th>
-                        <th>Nama</th>
-                        <th>Kelas</th>
-                        <th>No. HP</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Nama</th>
+                    <th>Jumlah</th>
+                    <th>Tanggal</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
                 <tbody>
                     @php($no = 1)
-                    @foreach ($siswa as $row)
+                    @foreach($infaq as $item)
                         <tr>
                             <th>{{ $no++ }}</th>
-                            <td>{{ $row->nim }}</td>
-                            <td>{{ $row->nama }}</td>
-                            <td>{{ $row->kelas }}</td>
-                            <td>{{ $row->no_hp }}</td>
+                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->amount }}</td>
+                            <td>{{ $item->created_at }}</td>
                             <td> 
-                                <a href="{{ route ('siswa.edit', $row->id) }}" class="btn btn-warning">
+                                <a href="{{ route ('infaq.edit', $item->id) }}" class="btn btn-warning">
                                     <span class="material-symbols-outlined">edit_square</span>
                                 </a>
-                                <form action="{{ route('siswa.delete', $row->id) }}" method="POST" style="display:inline-block;">
+                                <form action="{{ route('infaq.delete', $item->id) }}" method="POST" style="display:inline-block;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-danger delete-button">

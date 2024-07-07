@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title','Daftar Siswa')
+@section('title','Daftar Donatur')
 
 @section('content')
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Data Siswa</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Data Donatur</h6>
     </div>
     <div class="card-body">
-        <a href="{{ route('siswa.tambah') }}" class="btn btn-primary mb-3">
+        <a href="{{ route('donatur.tambah') }}" class="btn btn-primary mb-3">
             <i><span class="material-symbols-outlined" style="font-variation-settings: 'wght' 500;">person_add</span></i>
         </a>
         <div class="table-responsive">
@@ -16,27 +16,25 @@
                 <thead>
                     <tr>
                         <th>No.</th>
-                        <th>NIS</th>
                         <th>Nama</th>
-                        <th>Kelas</th>
+                        <th>Alamat</th>
                         <th>No. HP</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @php($no = 1)
-                    @foreach ($siswa as $row)
+                    @foreach ($donatur as $row)
                         <tr>
                             <th>{{ $no++ }}</th>
-                            <td>{{ $row->nim }}</td>
                             <td>{{ $row->nama }}</td>
-                            <td>{{ $row->kelas }}</td>
+                            <td>{{ $row->alamat }}</td>
                             <td>{{ $row->no_hp }}</td>
                             <td> 
-                                <a href="{{ route ('siswa.edit', $row->id) }}" class="btn btn-warning">
+                                <a href="{{ route ('donatur.edit', $row->id) }}" class="btn btn-warning">
                                     <span class="material-symbols-outlined">edit_square</span>
                                 </a>
-                                <form action="{{ route('siswa.delete', $row->id) }}" method="POST" style="display:inline-block;">
+                                <form action="{{ route('donatur.delete', $row->id) }}" method="POST" style="display:inline-block;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-danger delete-button">

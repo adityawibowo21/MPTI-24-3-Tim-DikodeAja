@@ -15,6 +15,13 @@ class SiswaController extends Controller
 
         
     }
+
+    public function getDashboard()
+    {
+        $jumlahSiswa = Siswa::count(); // Mengambil jumlah siswa dari database
+        return view('dashboard', compact('jumlahSiswa'));
+    }
+
     public function tambah()
     {
         return view('siswa.form'); 
