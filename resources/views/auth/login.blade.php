@@ -1,18 +1,21 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">
+                <span class="font-weight-bold display-5">{{ __('Login') }}</span>
+                    <small class="text-muted d-block">Selamat datang di Platform Keuangan Madrasah Diniyah Darussalam</small>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Alamat Email') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -40,28 +43,33 @@
                         </div>
 
                         <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 offset-md-4 d-flex justify-content-between">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
+                                        {{ __('Ingatkan Saya') }}
                                     </label>
                                 </div>
+                                @if (Route::has('password.request'))
+                                    <a class="btn btn-link p-0 text-danger" href="{{ route('password.request') }}">
+                                        {{ __('Lupa Password?') }}
+                                    </a>
+                                @endif
                             </div>
                         </div>
 
                         <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary w-100">
+                                    {{ __('Masuk') }}
                                 </button>
+                            </div>
+                        </div>
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
+                        <div class="row mt-3">
+                            <div class="col-md-6 offset-md-4 text-center">
+                                <p class="mb-0">Belum memiliki akun? Silahkan <a href="{{ route('register') }}">Daftar</a></p>
                             </div>
                         </div>
                     </form>

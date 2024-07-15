@@ -1,7 +1,7 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright &copy; DikodeAja 2024</span>
+            <span>&copy; 2024 DikodeAja. All rights reserved.</span>
         </div>
     </div>
 </footer>
